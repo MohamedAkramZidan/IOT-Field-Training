@@ -1,0 +1,5 @@
+from(bucket: "iot_data")
+  |> range(start: -10h)
+  |> filter(fn: (r) => r._measurement == "motion_status")
+  |> filter(fn: (r) => r._field == "motion")
+  |> last()
